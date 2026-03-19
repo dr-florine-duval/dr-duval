@@ -780,65 +780,73 @@
 
           <form id="contact-form" action="https://formspree.io/f/xlgpbjba" method="POST" novalidate>
 
-            <div class="form-honeypot" aria-hidden="true">
-              <input type="text" name="_honey" tabindex="-1" autocomplete="off" />
-            </div>
-            <input type="hidden" name="_language" value="fr" />
+              <input type="text" name="_honey" style="display:none">
 
-            <div class="form-row">
-              <div class="form-group">
-                <label for="prenom">Votre nom *</label>
-                <input type="text" id="prenom" name="prenom" placeholder="Prénom & Nom" required autocomplete="given-name" />
+              <input type="hidden" name="_form_loaded_at" id="form-loaded-at">
+
+              <input type="hidden" name="_language" value="fr" />
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="prenom">Votre nom *</label>
+                  <input type="text" id="prenom" name="prenom" placeholder="Prénom & Nom" required minlength="2" maxlength="100" autocomplete="name" />
+                </div>
+                <div class="form-group">
+                  <label for="email">Votre email *</label>
+                  <input type="email" id="email" name="email" placeholder="Adresse e-mail" required maxlength="200" autocomplete="email" />
+                </div>
               </div>
-              <div class="form-group">
-                <label for="email">Votre email *</label>
-                <input type="email" id="email" name="email" placeholder="Adresse e-mail" required autocomplete="email" />
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="classe">Classe de l'élève *</label>
+                  <select id="classe" name="classe" required>
+                    <option value="" disabled selected>Choisir…</option>
+                    <option value="6ème">6ème</option>
+                    <option value="5ème">5ème</option>
+                    <option value="4ème">4ème</option>
+                    <option value="3ème">3ème</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="matiere">Matière(s)</label>
+                  <select id="matiere" name="matiere">
+                    <option value="" disabled selected>Choisir…</option>
+                    <option value="Mathématiques">Mathématiques</option>
+                    <option value="Physique-Chimie">Physique-Chimie</option>
+                    <option value="SVT">SVT</option>
+                    <option value="Plusieurs matières">Plusieurs matières</option>
+                  </select>
+                </div>
               </div>
-            </div>
 
-            <div class="form-row">
               <div class="form-group">
-                <label for="classe">Classe de l'élève *</label>
-                <select id="classe" name="classe" required>
-                  <option value="" disabled selected>Choisir…</option>
-                  <option value="6ème">6ème</option>
-                  <option value="5ème">5ème</option>
-                  <option value="4ème">4ème</option>
-                  <option value="3ème">3ème</option>
-                </select>
+                <label for="message">Votre message *</label>
+                <textarea id="message" name="message" required minlength="10" maxlength="1000"
+                  placeholder="Décrivez la situation de votre enfant..."></textarea>
               </div>
+
               <div class="form-group">
-                <label for="matiere">Matière(s)</label>
-                <select id="matiere" name="matiere">
-                  <option value="" disabled selected>Choisir…</option>
-                  <option value="Mathématiques">Mathématiques</option>
-                  <option value="Physique-Chimie">Physique-Chimie</option>
-                  <option value="SVT">SVT</option>
-                  <option value="Plusieurs matières">Plusieurs matières</option>
-                </select>
+                <label for="human">Combien font 2 + 3 ?</label>
+                <input type="text" id="human" name="human" required>
               </div>
-            </div>
 
-            <div class="form-group">
-              <label for="message">Votre message *</label>
-              <textarea id="message" name="message" placeholder="Décrivez la situation de votre enfant : ce qui bloque, depuis quand, comment il le vit..." required></textarea>
-            </div>
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAACtMMGuRekH4BUgw"></div>
 
-            <button type="submit" class="btn-submit" id="submit-btn">
-              <span id="btn-text">Envoyer mon message →</span>
-              <span id="btn-loading" style="display:none;">Envoi en cours…</span>
-            </button>
+              <button type="submit" class="btn-submit" id="submit-btn">
+                <span id="btn-text">Envoyer mon message →</span>
+                <span id="btn-loading" style="display:none;">Envoi en cours…</span>
+              </button>
 
-            <div class="form-error-msg" id="form-error" role="alert">
-              Une erreur est survenue. Veuillez réessayer dans quelques instants.
-            </div>
-          </form>
+              <div class="form-error-msg" id="form-error" role="alert">
+                Une erreur est survenue. Veuillez réessayer.
+              </div>
+            </form>
 
-          <!-- Affiché après envoi réussi -->
           <div class="form-success" id="form-success" role="status">
             <div class="success-icon">✅</div>
             <h3>Message envoyé !</h3>
-            <p>Merci ! Je vous répondrai sous 24h. À très bientôt.</p>
+            <p>Merci ! Je vous répondrai rapidement. À très bientôt.</p>
           </div>
         </div>
       </div>
@@ -851,7 +859,7 @@
     <p class="mt-8">Soutien scolaire · Aide aux devoirs · Préparation brevet · Puy-de-Dôme · Auvergne · CESU accepté · Docteure en chimie</p>
     <p style="margin-top:10px; font-size:0.72rem; opacity:0.5;">Zone d'intervention : Saint-Éloy-les-Mines · Saint-Gervais-d'Auvergne · Pionsat · Montaigut-en-Combraille · Youx · Saint-Priest-des-Champs · Servant · Menat · Moureuille · Neuf-Église · Gouttières · Teilhet · Espinasse · Le Quartier · Durmignat · La Cellette · Sauret-Besserve · Ayat-sur-Sioule · Sainte-Christine · Saint-Julien-la-Geneste</p>
   </footer>
-
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script>
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
@@ -884,54 +892,89 @@
     });
 
     // Formspree — soumission AJAX pour rester sur la page
-    const form = document.getElementById('contact-form');
-    if (form) {
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+const form = document.getElementById('contact-form');
 
-        const btnText    = document.getElementById('btn-text');
-        const btnLoading = document.getElementById('btn-loading');
-        const submitBtn  = document.getElementById('submit-btn');
-        const errorMsg   = document.getElementById('form-error');
-        const successDiv = document.getElementById('form-success');
+if (form) {
 
-        // Validation HTML5 native
-        if (!form.checkValidity()) {
-          form.reportValidity();
-          return;
-        }
+  const btnText    = document.getElementById('btn-text');
+  const btnLoading = document.getElementById('btn-loading');
+  const submitBtn  = document.getElementById('submit-btn');
+  const errorMsg   = document.getElementById('form-error');
+  const successDiv = document.getElementById('form-success');
 
-        // Vérification honeypot côté client
-        const honey = form.querySelector('input[name="_honey"]');
-        if (honey && honey.value !== '') return;
+  // Set load timestamp
+  document.getElementById('form-loaded-at').value = Date.now();
 
-        // État "en cours"
-        btnText.style.display    = 'none';
-        btnLoading.style.display = 'inline';
-        submitBtn.disabled       = true;
-        errorMsg.style.display   = 'none';
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-        try {
-          const response = await fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-          });
+    errorMsg.style.display = 'none';
 
-          if (response.ok) {
-            form.style.display       = 'none';
-            successDiv.style.display = 'block';
-          } else {
-            throw new Error('server error');
-          }
-        } catch (err) {
-          errorMsg.style.display   = 'block';
-          btnText.style.display    = 'inline';
-          btnLoading.style.display = 'none';
-          submitBtn.disabled       = false;
-        }
-      });
+    // Native validation
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
     }
+
+    const honey  = form.querySelector('input[name="_honey"]').value;
+    const human  = form.human.value.trim();
+    const email  = form.email.value.trim();
+
+    // Honeypot
+    if (honey) return;
+
+    // Time check
+    const loadedAt = parseInt(document.getElementById('form-loaded-at').value, 10);
+    const secondsElapsed = (Date.now() - loadedAt) / 1000;
+
+    if (secondsElapsed < 4) return;
+
+    // Human check
+    if (human !== "5") {
+      errorMsg.textContent = "Réponse anti-spam incorrecte.";
+      errorMsg.style.display = 'block';
+      return;
+    }
+
+    // Disposable email filter
+    const blocked = ['cutemails', 'tempmail', '10minutemail', 'guerrillamail'];
+    if (blocked.some(d => email.includes(d))) return;
+
+    // Turnstile check
+    const ts = document.querySelector('[name="cf-turnstile-response"]');
+    if (!ts || !ts.value) {
+      errorMsg.textContent = "Veuillez valider le contrôle anti-robot.";
+      errorMsg.style.display = 'block';
+      return;
+    }
+
+    // UI loading
+    btnText.style.display    = 'none';
+    btnLoading.style.display = 'inline';
+    submitBtn.disabled       = true;
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        form.style.display       = 'none';
+        successDiv.style.display = 'block';
+      } else {
+        throw new Error();
+      }
+
+    } catch (err) {
+      errorMsg.style.display   = 'block';
+      btnText.style.display    = 'inline';
+      btnLoading.style.display = 'none';
+      submitBtn.disabled       = false;
+    }
+  });
+}
   </script>
 </body>
 </html>
